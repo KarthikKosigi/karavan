@@ -1,0 +1,25 @@
+- dslName: RouteDefinition
+  stepName: route
+  from:
+    uri: amqp
+    steps:
+      - inArray: true
+        inSteps: true
+      - inArray: true
+        inSteps: true
+    dslName: FromDefinition
+    stepName: from
+- dslName: RouteDefinition
+  stepName: route
+  from:
+    uri: 'kamelet:azure-storage-blob-changefeed-source'
+    steps:
+      - dslName: LoopDefinition
+        stepName: loop
+        expression:
+          dslName: ExpressionDefinition
+          stepName: expression
+        inArray: true
+        inSteps: true
+    dslName: FromDefinition
+    stepName: from
