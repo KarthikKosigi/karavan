@@ -1,0 +1,12 @@
+- dslName: RouteDefinition
+  stepName: route
+  from:
+    uri: 'kamelet:aws-redshift-source'
+    dslName: FromDefinition
+    stepName: from
+- dslName: RouteDefinition
+  stepName: route
+  from:
+    uri: 'kamelet:azure-storage-blob-changefeed-source'
+    dslName: FromDefinition
+    stepName: from
