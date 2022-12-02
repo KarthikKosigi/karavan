@@ -10,3 +10,9 @@
     uri: 'kamelet:azure-storage-blob-changefeed-source'
     dslName: FromDefinition
     stepName: from
+- dslName: RouteDefinition
+  stepName: route
+  from:
+    uri: 'kamelet:aws-sqs-source'
+    dslName: FromDefinition
+    stepName: from
