@@ -1,0 +1,17 @@
+- dslName: RouteDefinition
+  stepName: route
+  from:
+    uri: 'rest:get:test:t'
+    steps:
+      - dslName: SetBodyDefinition
+        stepName: setBody
+        expression:
+          dslName: ExpressionDefinition
+          stepName: expression
+          constant:
+            dslName: ConstantExpression
+            expression: sfdsfds
+        inArray: true
+        inSteps: true
+    dslName: FromDefinition
+    stepName: from
