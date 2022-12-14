@@ -1,9 +1,3 @@
-apiVersion: camel.apache.org/v1
-kind: Integration
-metadata:
-  name: kk
-spec:
-  flows:
     - route:
         from:
           uri: timer:timer
