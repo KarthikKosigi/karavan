@@ -1,7 +1,0 @@
-    - route:
-        from:
-          uri: timer:timer
-          steps:
-            - log:
-                message: 'logging '
-                logName: test
