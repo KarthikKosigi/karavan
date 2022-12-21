@@ -98,30 +98,6 @@
             uri: ehcache:WorkOrders
       parameters:
         period: '3600000'
-- route:
-    from:
-      uri: rest:get:odata/*
-      steps:
-        - setHeader:
-            name: CamelEhcacheAction
-            expression:
-              constant:
-                expression: GET_ALL
-        - setHeader:
-            name: CamelEhcacheKeys
-            expression:
-              joor:
-                expression: >-
-                  new
-                  HashSet<String>(Arrays.asList("WORKORDERS_KEY","ASSETS_KEY"));
-        - log:
-            message: ${body}
-        - to:
-            uri: ehcache:WorkOrders
-        - convertBodyTo:
-            type: java.util.HashMap
-        - process:
-            ref: processor
 - beans:
     - name: processor
       type: com.odata.ODataCustomProcessor
