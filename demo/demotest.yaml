@@ -1,7 +1,14 @@
+apiVersion: camel.apache.org/v1
+kind: Integration
+metadata:
+  name: kk.yaml
+spec:
+  flows:
     - route:
         from:
-          uri: timer:timer
+          uri: timer:test
           steps:
             - log:
-                message: 'logging '
-                logName: test
+                message: test
+          parameters:
+            period: '2000'
