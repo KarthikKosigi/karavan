@@ -1,10 +1,4 @@
-apiVersion: camel.apache.org/v1
-kind: Integration
-metadata:
-  name: demotest
-spec:
-  flows:
-    - route:
+ - route:
         from:
           uri: timer:test
           steps:
