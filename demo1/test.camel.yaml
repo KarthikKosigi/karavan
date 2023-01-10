@@ -1,103 +1,25 @@
-- route:
-    from:
-      uri: timer:GetWorkOrders
-      steps:
-        - setHeader:
-            name: Content-Type
-            expression:
-              constant:
-                expression: application/json
-        - setHeader:
-            name: Organization
-            expression:
-              constant:
-                expression: SDX
-        - setHeader:
-            name: Tenant
-            expression:
-              constant:
-                expression: SDXTEST_TST
-        - setHeader:
-            name: Accept
-            expression:
-              constant:
-                expression: application/json
-        - to:
-            uri: >-
-              https://hxgnstable.eamade.hxgnsmartcloud.com/axis/restservices/workorders
-            parameters:
-              httpMethod: GET
-        - convertBodyTo:
-            type: String
-        - setHeader:
-            name: CamelEhcacheKey
-            expression:
-              constant:
-                expression: WORKORDERS_KEY
-        - setHeader:
-            name: CamelEhcacheValue
-            expression:
-              simple:
-                expression: ${body}
-        - setHeader:
-            name: CamelEhcacheAction
-            expression:
-              constant:
-                expression: PUT_IF_ABSENT
-        - to:
-            uri: ehcache:WorkOrders
-      parameters:
-        period: '3600000'
-- route:
-    from:
-      uri: timer:GetAssets
-      steps:
-        - setHeader:
-            name: Content-Type
-            expression:
-              constant:
-                expression: application/json
-        - setHeader:
-            name: Accept
-            expression:
-              constant:
-                expression: application/json
-        - setHeader:
-            name: Organization
-            expression:
-              constant:
-                expression: SDX
-        - setHeader:
-            name: Tenant
-            expression:
-              constant:
-                expression: SDXTEST_TST
-        - to:
-            uri: >-
-              https://hxgnstable.eamade.hxgnsmartcloud.com/axis/restservices/assets
-            parameters:
-              httpMethod: GET
-        - convertBodyTo:
-            type: String
-        - setHeader:
-            name: CamelEhcacheAction
-            expression:
-              constant:
-                expression: PUT_IF_ABSENT
-        - setHeader:
-            name: CamelEhcacheKey
-            expression:
-              constant:
-                expression: ASSETS_KEY
-        - setHeader:
-            name: CamelEhcacheValue
-            expression:
-              simple:
-                expression: ${body}
-        - to:
-            uri: ehcache:WorkOrders
-      parameters:
-        period: '3600000'
-- beans:
-    - name: processor
+- dslName: RouteDefinition
+  stepName: route
+  from:
+    uri: 'kamelet:aws-ddb-streams-source'
+    dslName: FromDefinition
+    stepName: from
+- dslName: RouteDefinition
+  stepName: route
+  from:
+    uri: 'kamelet:aws-s3-source'
+    dslName: FromDefinition
+    stepName: from
+- dslName: RouteDefinition
+  stepName: route
+  from:
+    uri: 'kamelet:aws-kinesis-source'
+    dslName: FromDefinition
+    stepName: from
+- dslName: Beans
+  beans:
+    - dslName: NamedBeanDefinition
+      name: processor
       type: com.odata.ODataCustomProcessor
+      inArray: true
+      inSteps: false
