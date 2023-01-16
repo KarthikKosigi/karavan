@@ -1,8 +1,20 @@
- - route:
-        from:
-          uri: timer:test
-          steps:
-            - log:
-                message: test
-          parameters:
-            period: '2000'
+- dslName: RouteDefinition
+  stepName: route
+  from:
+    uri: 'timer:test'
+    steps:
+      - dslName: LogDefinition
+        stepName: log
+        message: test
+        inArray: true
+        inSteps: true
+    dslName: FromDefinition
+    stepName: from
+    parameters:
+      period: '2000'
+- dslName: RouteDefinition
+  stepName: route
+  from:
+    uri: cron
+    dslName: FromDefinition
+    stepName: from
