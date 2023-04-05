@@ -1,5 +1,7 @@
 - route:
-    id: route-60d7
     from:
-      uri: kamelet:aws-ddb-streams-source
-      id: from-1f23
+      uri: timer:timer
+      steps:
+        - log:
+            message: 'logging '
+            logName: test
