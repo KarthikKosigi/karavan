@@ -1,20 +1,7 @@
-- dslName: RouteDefinition
-  stepName: route
-  from:
-    uri: amqp
-    steps:
-      - inArray: true
-        inSteps: true
-      - inArray: true
-        inSteps: true
-      - inArray: true
-        inSteps: true
-    dslName: FromDefinition
-    stepName: from
-- dslName: Beans
-  beans:
-    - dslName: NamedBeanDefinition
-      name: processor
-      type: com.odata.ODataCustomProcessor
-      inArray: true
-      inSteps: false
+- route:
+    from:
+      uri: timer:timer
+      steps:
+        - log:
+            message: 'logging '
+            logName: test
