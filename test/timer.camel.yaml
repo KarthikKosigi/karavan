@@ -3,5 +3,5 @@
       uri: timer:timer
       steps:
         - log:
-            message: 'logging '
+            message: 'logging'
             logName: test
