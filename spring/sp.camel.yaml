@@ -1,0 +1,9 @@
+- route:
+    id: route-6a58
+    from:
+      uri: timer:test
+      id: from-d8d5
+      steps:
+        - log:
+            message: ${body}
+            id: log-a1d2
