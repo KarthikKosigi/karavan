@@ -5,5 +5,5 @@
       id: from-d8d5
       steps:
         - log:
-            message: ${body}
+            message: spring logging
             id: log-a1d2
