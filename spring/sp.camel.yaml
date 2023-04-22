@@ -7,3 +7,4 @@
         - log:
             message: spring logging
             id: log-a1d2
+            logName: test
