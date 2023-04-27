@@ -1,0 +1,12 @@
+- dslName: RouteDefinition
+  stepName: route
+  from:
+    uri: amqp
+    steps:
+      - uri: asterisk
+        dslName: ToDefinition
+        stepName: to
+        inArray: true
+        inSteps: true
+    dslName: FromDefinition
+    stepName: from
