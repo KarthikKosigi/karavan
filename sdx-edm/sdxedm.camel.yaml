@@ -1,0 +1,175 @@
+- route:
+    id: route-2637
+    from:
+      uri: timer:GetWorkOrders
+      id: from-1e4c
+      parameters:
+        period: '3600000'
+      steps:
+        - setHeader:
+            name: Content-Type
+            id: setHeader-ba55
+            expression:
+              constant:
+                expression: application/json
+                id: constant-1db7
+        - setHeader:
+            name: Organization
+            id: setHeader-650c
+            expression:
+              constant:
+                expression: SDX
+                id: constant-67de
+        - setHeader:
+            name: Tenant
+            id: setHeader-f17b
+            expression:
+              constant:
+                expression: SDXTEST_TST
+                id: constant-dc94
+        - setHeader:
+            name: Accept
+            id: setHeader-c3f5
+            expression:
+              constant:
+                expression: application/json
+                id: constant-2e9c
+        - to:
+            uri: >-
+              https://hxgnstable.eamade.hxgnsmartcloud.com/axis/restservices/workorders
+            id: to-6ba7
+            parameters:
+              httpMethod: GET
+        - convertBodyTo:
+            type: String
+            id: convertBodyTo-d452
+        - setHeader:
+            name: CamelEhcacheKey
+            id: setHeader-0ccc
+            expression:
+              constant:
+                expression: WORKORDERS_KEY
+                id: constant-c1ad
+        - setHeader:
+            name: CamelEhcacheValue
+            id: setHeader-81ae
+            expression:
+              simple:
+                expression: ${body}
+                id: simple-ccf8
+        - setHeader:
+            name: CamelEhcacheAction
+            id: setHeader-dea4
+            expression:
+              constant:
+                expression: PUT_IF_ABSENT
+                id: constant-cd85
+        - to:
+            uri: ehcache:WorkOrders
+            id: to-a39e
+- route:
+    id: route-a7b3
+    from:
+      uri: timer:GetAssets
+      id: from-64ca
+      parameters:
+        period: '3600000'
+      steps:
+        - setHeader:
+            name: Content-Type
+            id: setHeader-345f
+            expression:
+              constant:
+                expression: application/json
+                id: constant-6c3b
+        - setHeader:
+            name: Accept
+            id: setHeader-c238
+            expression:
+              constant:
+                expression: application/json
+                id: constant-e4da
+        - setHeader:
+            name: Organization
+            id: setHeader-4602
+            expression:
+              constant:
+                expression: SDX
+                id: constant-f9fa
+        - setHeader:
+            name: Tenant
+            id: setHeader-bc7d
+            expression:
+              constant:
+                expression: SDXTEST_TST
+                id: constant-5fee
+        - to:
+            uri: >-
+              https://hxgnstable.eamade.hxgnsmartcloud.com/axis/restservices/assets
+            id: to-0849
+            parameters:
+              httpMethod: GET
+        - convertBodyTo:
+            type: String
+            id: convertBodyTo-3350
+        - setHeader:
+            name: CamelEhcacheAction
+            id: setHeader-7420
+            expression:
+              constant:
+                expression: PUT_IF_ABSENT
+                id: constant-bdea
+        - setHeader:
+            name: CamelEhcacheKey
+            id: setHeader-c087
+            expression:
+              constant:
+                expression: ASSETS_KEY
+                id: constant-8897
+        - setHeader:
+            name: CamelEhcacheValue
+            id: setHeader-e171
+            expression:
+              simple:
+                expression: ${body}
+                id: simple-067d
+        - to:
+            uri: ehcache:WorkOrders
+            id: to-f595
+- route:
+    id: route-f529
+    from:
+      uri: rest:get:odata/*
+      id: from-d84e
+      steps:
+        - setHeader:
+            name: CamelEhcacheAction
+            id: setHeader-1bf0
+            expression:
+              constant:
+                expression: GET_ALL
+                id: constant-c7a0
+        - setHeader:
+            name: CamelEhcacheKeys
+            id: setHeader-058c
+            expression:
+              joor:
+                expression: >-
+                  new
+                  HashSet<String>(Arrays.asList("WORKORDERS_KEY","ASSETS_KEY"));
+                id: joor-9caf
+        - log:
+            message: ${body}
+            id: log-7e97
+        - to:
+            uri: ehcache:WorkOrders
+            id: to-e5ad
+        - convertBodyTo:
+            type: java.util.HashMap
+            id: convertBodyTo-1719
+        - process:
+            ref: processor
+            id: process-348f
+- beans:
+    - name: processor
+      type: com.odata.ODataCustomProcessor
