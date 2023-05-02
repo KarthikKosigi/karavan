@@ -86,6 +86,9 @@ import org.apache.olingo.server.api.uri.UriParameter;
 import org.apache.olingo.commons.api.edm.FullQualifiedName;
 import org.json.*;
 
+import javax.inject.Named;
+import javax.inject.Singleton;
+
 @Singleton
 @Named("Odatacustomprocessor")
 public class Odatacustomprocessor implements Processor {
