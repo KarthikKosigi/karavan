@@ -87,7 +87,7 @@ import org.apache.olingo.commons.api.edm.FullQualifiedName;
 import org.json.*;
 
 
-public class ODataCustomProcessor implements Processor {
+public class Odatacustomprocessor implements Processor {
 
     class EData{
         public String ES_NAME;
