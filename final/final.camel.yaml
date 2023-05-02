@@ -1,7 +1,11 @@
 - route:
+    id: route-d87a
     from:
-      uri: timer:timer
+      uri: timer:final
+      id: from-2b36
+      parameters:
+        delay: '5000'
       steps:
         - log:
-            message: 'logging '
-            logName: test
+            message: final
+            id: log-0534
