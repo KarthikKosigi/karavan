@@ -3,6 +3,8 @@
     from:
       uri: timer:test2
       id: from-84c7
+      parameters:
+        delay: '5000'
       steps:
         - log:
             message: test2
