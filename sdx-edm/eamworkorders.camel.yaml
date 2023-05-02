@@ -172,4 +172,4 @@
             id: process-348f
 - beans:
     - name: processor
-      type: com.odata.ODataCustomProcessor
+      type: com.odata.Odatacustomprocessor
