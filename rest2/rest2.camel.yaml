@@ -1,0 +1,12 @@
+- route:
+    id: route-ad38
+    from:
+      uri: 'rest:get:rest2'
+      id: from-f3a7
+      steps:
+        - setBody:
+            id: setBody-bce4
+            expression:
+              simple:
+                expression: hello from rest2
+                id: simple-0890
