@@ -1,4 +1,6 @@
-package com.odata;
+// camel-k: language=java
+
+import org.apache.camel.builder.RouteBuilder;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -87,7 +89,7 @@ import org.apache.olingo.commons.api.edm.FullQualifiedName;
 import org.json.*;
 
 
-public class Odatacustomprocessor implements Processor {
+class ODataCustomProcessor implements Processor {
 
     class EData{
         public String ES_NAME;
@@ -712,4 +714,26 @@ public class Odatacustomprocessor implements Processor {
             exchange.getIn().setBody( res.getContent());
     }
 
+}
+
+public class Odataroute extends RouteBuilder {
+  @Override
+  public void configure() throws Exception {
+
+    from("rest:get:odata/*")
+    .setHeader("CamelEhcacheAction", constant("GET_ALL"))
+    .process(new Processor() {
+      public void process(Exchange exchange) throws Exception {
+          String payload = exchange.getIn().getBody(String.class);
+          Set<String> data = new LinkedHashSet<String>();   
+          data.add("WORKORDERS_KEY");   
+          data.add("ASSETS_KEY");  
+          exchange.getIn().setHeader("CamelEhcacheKeys",data);
+     }
+    })
+    .to("ehcache:WorkOrders")
+    .convertBodyTo(HashMap.class)
+    .process(new ODataCustomProcessor());
+
+  }
 }
