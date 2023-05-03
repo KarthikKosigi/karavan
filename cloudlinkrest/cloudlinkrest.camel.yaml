@@ -1,12 +1,12 @@
 - route:
     id: route-da98
     from:
-      uri: 'rest:get:cloudlink'
+      uri: rest:get:cloudlink
       id: from-e796
       steps:
         - setBody:
             id: setBody-c346
             expression:
-              simple:
-                expression: Hello from cloud link.
-                id: simple-a7f8
+              constant:
+                expression: Hello From Cloud Link
+                id: constant-01f5
