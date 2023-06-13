@@ -1,9 +1,0 @@
-- route:
-    id: route-473f
-    from:
-      uri: timer:kttimer
-      id: from-6ad3
-      steps:
-        - log:
-            message: kt
-            id: log-f631
