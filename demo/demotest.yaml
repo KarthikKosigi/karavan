@@ -1,8 +1,0 @@
- - route:
-        from:
-          uri: timer:test
-          steps:
-            - log:
-                message: test
-          parameters:
-            period: '2000'
