@@ -1,116 +1,161 @@
 - route:
+    id: route-cfb7
     from:
       uri: timer:GetWorkOrders
+      id: from-acd5
+      parameters:
+        period: '3600000'
       steps:
         - setHeader:
             name: Content-Type
+            id: setHeader-7508
             expression:
               constant:
                 expression: application/json
+                id: constant-d99a
         - setHeader:
             name: Accept
+            id: setHeader-c4e6
             expression:
               constant:
                 expression: application/json
+                id: constant-bed2
         - setHeader:
             name: Organization
+            id: setHeader-109c
             expression:
               constant:
                 expression: SDX
+                id: constant-5cdd
         - setHeader:
             name: Tenant
+            id: setHeader-b608
             expression:
               constant:
                 expression: SDXTEST_TST
+                id: constant-9368
         - to:
             uri: >-
               https://hxgnstable.eamade.hxgnsmartcloud.com/axis/restservices/workorders
+            id: to-3e34
             parameters:
               httpMethod: GET
         - convertBodyTo:
             type: String
+            id: convertBodyTo-483e
         - setHeader:
             name: CamelEhcacheAction
+            id: setHeader-23bc
             expression:
               constant:
                 expression: PUT_IF_ABSENT
+                id: constant-d7f8
         - setHeader:
             name: CamelEhcacheKey
+            id: setHeader-38ce
             expression:
               constant:
                 expression: WORKORDERS_KEY
+                id: constant-c6c8
         - setHeader:
             name: CamelEhcacheValue
+            id: setHeader-7a0a
             expression:
               simple:
                 expression: ${body}
+                id: simple-8ec9
         - to:
             uri: ehcache:WorkOrders
-      parameters:
-        period: '3600000'
+            id: to-5e5b
 - route:
+    id: route-ab59
     from:
       uri: timer:GetAssets
+      id: from-fb98
+      parameters:
+        period: '3600000'
       steps:
         - setHeader:
             name: Content-Type
+            id: setHeader-6be8
             expression:
               constant:
                 expression: application/json
+                id: constant-0f94
         - setHeader:
             name: Accept
+            id: setHeader-a367
             expression:
               constant:
                 expression: application/json
+                id: constant-4079
         - setHeader:
             name: Organization
+            id: setHeader-d2bf
             expression:
               constant:
                 expression: SDX
+                id: constant-669b
         - setHeader:
             name: Tenant
+            id: setHeader-7781
             expression:
               constant:
                 expression: SDXTEST_TST
+                id: constant-6957
         - to:
             uri: >-
               https://hxgnstable.eamade.hxgnsmartcloud.com/axis/restservices/assets
+            id: to-4409
             parameters:
               httpMethod: GET
         - convertBodyTo:
             type: String
+            id: convertBodyTo-e234
         - setHeader:
             name: CamelEhcacheAction
+            id: setHeader-8b63
             expression:
               constant:
                 expression: PUT_IF_ABSENT
+                id: constant-ce0e
         - setHeader:
             name: CamelEhcacheKey
+            id: setHeader-bbcb
             expression:
               constant:
                 expression: ASSETS_KEY
+                id: constant-6e99
         - setHeader:
             name: CamelEhcacheValue
+            id: setHeader-2ecc
             expression:
               simple:
                 expression: ${body}
+                id: simple-a05a
         - to:
             uri: ehcache:WorkOrders
-      parameters:
-        period: '3600000'
+            id: to-3f97
 - route:
+    id: route-3566
     from:
       uri: rest:get:test
+      id: from-5a53
       steps:
         - setHeader:
             name: CamelEhcacheAction
+            id: setHeader-52db
             expression:
               constant:
                 expression: GET
+                id: constant-75e1
         - setHeader:
             name: CamelEhcacheKey
+            id: setHeader-16c5
             expression:
               constant:
                 expression: WORKORDERS_KEY
+                id: constant-26e8
         - to:
             uri: ehcache:WorkOrders
+            id: to-f48b
