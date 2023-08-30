@@ -1,0 +1,30 @@
+- route:
+    id: route-d412
+    from:
+      uri: amqp
+      id: from-441b
+      steps:
+        - undefined: {}
+        - dynamicRouter:
+            id: dynamicRouter-a89b
+            expression: {}
+        - log:
+            message: ${body}
+            id: log-c0324
+        - claimCheck:
+            id: claimCheck-0d0d
+- route:
+    id: route-e5f8
+    from:
+      uri: amqp
+      id: from-7782
+- route:
+    id: route-0e10
+    from:
+      uri: asterisk
+      id: from-9d3c
+- route:
+    id: route-b7b6
+    from:
+      uri: atmosphere-websocket
+      id: from-d8d1
