@@ -1,0 +1,60 @@
+- route:
+    id: route-71d1
+    from:
+      uri: timer:permitdata
+      id: from-cc8e
+      parameters:
+        period: '3600000'
+      steps:
+        - setHeader:
+            name: Content-Type
+            id: setHeader-140e
+            expression:
+              constant:
+                expression: application/json
+                id: constant-ee18
+        - to:
+            uri: >-
+              https://gtmsa.devdemo.hexagonppm.com:9004/restserver/26.0/industraform/logbook-query/permits
+            id: to-373b
+            parameters:
+              httpMethod: GET
+              authUsername: admin
+              authPassword: '1234'
+              authMethod: Basic
+              bridgeEndpoint: true
+              attribute_names: >-
+                equipment.DisplayValue,logid,area1.DisplayValue,area2.DisplayValue,area3.DisplayValue,area4.DisplayValue,permit_type.DisplayValue
+              pretty: true
+              format: json
+              getWithBody: true
+            disabled: false
+        - convertBodyTo:
+            type: String
+            id: convertBodyTo-ba45
+        - setHeader:
+            name: CamelEhcacheValue
+            id: setHeader-935a
+            expression:
+              simple:
+                expression: ${body}
+                id: simple-701a
+        - setHeader:
+            name: CamelEhcacheKey
+            id: setHeader-dce1
+            expression:
+              constant:
+                expression: PERMIT_KEY
+                id: constant-e6fd
+        - to:
+            uri: ehcache:permitdatas
+            id: to-5a7e
+- route:
+    id: route-2f0f
+    from:
+      uri: avro
+      id: from-f222
+      steps:
+        - log:
+            message: ${body}
+            id: log-2c20
