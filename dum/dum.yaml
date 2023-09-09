@@ -1,5 +1,4 @@
 - route:
-    id: route-265c
     from:
       uri: timer
       id: from-3249
