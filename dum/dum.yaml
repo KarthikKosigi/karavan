@@ -1,12 +1,9 @@
-- dslName: RouteDefinition
-  stepName: route
-  from:
-    uri: amqp
-    steps:
-      - uri: asterisk
-        dslName: ToDefinition
-        stepName: to
-        inArray: true
-        inSteps: true
-    dslName: FromDefinition
-    stepName: from
+- route:
+    id: route-265c
+    from:
+      uri: timer
+      id: from-3249
+      steps:
+        - log:
+            message: Hello world
+            id: log-99c1
