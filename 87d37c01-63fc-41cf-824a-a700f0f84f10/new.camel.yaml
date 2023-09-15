@@ -1,0 +1,9 @@
+- route:
+    id: route-3f69
+    from:
+      uri: timer:temp
+      id: from-2da0
+      steps:
+        - log:
+            message: test one
+            id: log-4b13
