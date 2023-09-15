@@ -1,15 +1,18 @@
-- from:
-    uri: "timer:tick" 
-    parameters: 
-      # time in milliseconds (10 seconds)
-      period: 10000
-    steps: 
-      - set-body: 
-          constant: "Welcome to Apache Camel K from Dummy"
-      - set-header: 
-          name: ContentType
-          simple: text/plain
-      - transform: 
-          simple: "${body.toUpperCase()}"
-      - to: 
-          uri: "log:info?multiline=true&showAll=true"
+- route:
+    id: route-383d
+    from:
+      uri: timer
+      id: from-b070
+      steps:
+        - log:
+            message: Dummy
+            id: log-f339
+- route:
+    id: route-153b
+    from:
+      uri: timer
+      id: from-8c4c
+      steps:
+        - log:
+            message: Dummy 2
+            id: log-913f
