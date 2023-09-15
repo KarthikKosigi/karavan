@@ -1,18 +1,9 @@
 - route:
-    id: route-383d
+    id: route-1f04
     from:
-      uri: timer
-      id: from-b070
+      uri: timer:toto
+      id: from-dafe
       steps:
         - log:
-            message: Dummy
-            id: log-f339
-- route:
-    id: route-153b
-    from:
-      uri: timer
-      id: from-8c4c
-      steps:
-        - log:
-            message: Dummy 2
-            id: log-913f
+            message: Spring
+            id: log-f4b5
