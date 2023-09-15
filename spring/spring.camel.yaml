@@ -1,0 +1,18 @@
+- route:
+    id: route-383d
+    from:
+      uri: timer
+      id: from-b070
+      steps:
+        - log:
+            message: Dummy
+            id: log-f339
+- route:
+    id: route-153b
+    from:
+      uri: timer
+      id: from-8c4c
+      steps:
+        - log:
+            message: Dummy 2
+            id: log-913f
