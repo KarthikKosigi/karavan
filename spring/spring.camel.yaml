@@ -7,3 +7,12 @@
         - log:
             message: Spring
             id: log-f4b5
+- route:
+    id: route-a8f7
+    from:
+      uri: timer
+      id: from-b17c
+      steps:
+        - log:
+            message: spring 2
+            id: log-7406
