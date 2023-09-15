@@ -5,5 +5,5 @@
       id: from-dafe
       steps:
         - log:
-            message: Spring from cllink
+            message: Spring from cllink from standup
             id: log-f4b5
