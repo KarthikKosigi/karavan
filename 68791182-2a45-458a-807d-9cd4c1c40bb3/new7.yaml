@@ -1,7 +1,9 @@
-from:
-  uri: 'timer:kk'
-  id: from-dd56
-  steps:
-    - log:
-        message: karthik kosigi
-        id: log-cb64
+- route:
+    id: route-da26
+    from:
+      uri: timer:kk
+      id: from-e5dd
+      steps:
+        - log:
+            message: kk
+            id: log-08ed
