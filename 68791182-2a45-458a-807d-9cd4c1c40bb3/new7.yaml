@@ -5,5 +5,5 @@
       id: from-e5dd
       steps:
         - log:
-            message: kk
+            message: test
             id: log-08ed
