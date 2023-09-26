@@ -7,9 +7,9 @@
         - setBody:
             id: setBody-3908
             expression:
-              constant:
+              simple:
                 expression: Temple town
-                id: constant-5707
+                id: simple-b1cc
         - log:
             message: ${body}
             id: log-fc07
