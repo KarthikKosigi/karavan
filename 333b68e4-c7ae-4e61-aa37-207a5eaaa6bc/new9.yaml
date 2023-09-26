@@ -1,0 +1,11 @@
+- route:
+    id: route-f5b0
+    from:
+      uri: timer
+      id: from-419c
+      parameters:
+        period: '5000'
+      steps:
+        - log:
+            message: testing
+            id: log-f1ae
