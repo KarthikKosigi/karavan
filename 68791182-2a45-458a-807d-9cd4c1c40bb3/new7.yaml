@@ -3,7 +3,9 @@
     from:
       uri: timer:kk
       id: from-e5dd
+      parameters:
+        period: '100000'
       steps:
         - log:
-            message: Rohit f
+            message: Rohit final
             id: log-08ed
