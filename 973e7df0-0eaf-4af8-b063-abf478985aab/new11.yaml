@@ -1,0 +1,15 @@
+- route:
+    id: route-f777
+    from:
+      uri: timer:test
+      id: from-90c6
+      steps:
+        - setBody:
+            id: setBody-3908
+            expression:
+              constant:
+                expression: Temple town
+                id: constant-5707
+        - log:
+            message: ${body}
+            id: log-fc07
