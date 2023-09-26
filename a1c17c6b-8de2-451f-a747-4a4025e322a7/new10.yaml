@@ -1,0 +1,9 @@
+- route:
+    id: route-025a
+    from:
+      uri: timer:kk
+      id: from-0d05
+      steps:
+        - log:
+            message: Final kk
+            id: log-7a77
