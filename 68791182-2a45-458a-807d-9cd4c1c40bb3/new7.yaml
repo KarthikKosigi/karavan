@@ -1,11 +1,11 @@
 - route:
     id: route-da26
     from:
-      uri: timer:kk
+      uri: timer:kksdf
       id: from-e5dd
       parameters:
         period: '100000'
       steps:
         - log:
-            message: Rohit final
+            message: KK final
             id: log-08ed
