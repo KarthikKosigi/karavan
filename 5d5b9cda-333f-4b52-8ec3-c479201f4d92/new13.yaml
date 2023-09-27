@@ -1,0 +1,11 @@
+- route:
+    id: route-3c6a
+    from:
+      uri: timer:test
+      id: from-9226
+      parameters:
+        period: '5000'
+      steps:
+        - log:
+            message: Adoni
+            id: log-a491
