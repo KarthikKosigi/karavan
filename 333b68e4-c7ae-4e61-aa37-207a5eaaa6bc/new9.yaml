@@ -7,5 +7,5 @@
         period: '5000'
       steps:
         - log:
-            message: testing
+            message: Karthik Kosigi
             id: log-f1ae
