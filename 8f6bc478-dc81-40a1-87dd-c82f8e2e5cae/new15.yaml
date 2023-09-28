@@ -1,0 +1,12 @@
+- route:
+    id: route-3902
+    from:
+      uri: timer:kk
+      id: from-6f18
+      parameters:
+        period: '5000'
+      steps:
+        - log:
+            message: KK final test
+            id: log-e379
+            loggingLevel: ERROR
