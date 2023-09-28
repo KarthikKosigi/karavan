@@ -1,0 +1,9 @@
+- route:
+    id: route-73ab
+    from:
+      uri: timer
+      id: from-39c7
+      steps:
+        - log:
+            message: yoyo
+            id: log-dca0
