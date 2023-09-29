@@ -1,0 +1,18 @@
+- route:
+    id: route-d5d2
+    from:
+      uri: timer:demo
+      id: from-92ee
+      parameters:
+        delay: '5000'
+      steps:
+        - setBody:
+            id: setBody-2f32
+            expression:
+              constant:
+                expression: Sprint demo
+                id: constant-2380
+        - log:
+            message: ${body}
+            id: log-c4f1
+            loggingLevel: INFO
