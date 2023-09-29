@@ -1,7 +1,7 @@
 - route:
     id: route-acd7
     from:
-      uri: timer
+      uri: timer:test
       id: from-7228
       steps:
         - log:
