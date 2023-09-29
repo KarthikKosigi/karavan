@@ -1,0 +1,69 @@
+- route:
+    id: route-6edf
+    from:
+      uri: timer
+      id: from-f0cf
+      parameters:
+        delay: '5000'
+      steps:
+        - setHeader:
+            name: Content-type
+            id: setHeader-f914
+            expression:
+              constant:
+                expression: application/xml
+                id: constant-3e5c
+        - to:
+            uri: >-
+              https://gtmsa.devdemo.hexagonppm.com:9004/restserver/26.0/industraform/logbook-query/permits
+            id: to-266e
+        - convertBodyTo:
+            type: String
+            id: convertBodyTo-7fbd
+        - setHeader:
+            name: CamelEhCacheKey
+            id: setHeader-1931
+            expression:
+              constant:
+                expression: key
+                id: constant-abc5
+        - setHeader:
+            name: CamelEhCacheValue
+            id: setHeader-76ed
+            expression:
+              constant:
+                expression: Value
+                id: constant-d8bb
+        - setHeader:
+            name: CamelEhCacheAction
+            id: setHeader-66f2
+            expression:
+              constant:
+                expression: PUT_IF_ABSENT
+                id: constant-8f67
+        - to:
+            uri: ehcache
+            id: to-320b
+- route:
+    id: route-444a
+    from:
+      uri: rest::odata:o
+      id: from-b15c
+      steps:
+        - setHeader:
+            name: CamelEhCacheKey
+            id: setHeader-d9aa
+            expression:
+              constant:
+                expression: Key
+                id: constant-76e1
+        - setHeader:
+            name: CamelEhCacheAction
+            id: setHeader-ba29
+            expression:
+              constant:
+                expression: GET
+                id: constant-c172
+        - process:
+            ref: PermitOdataImp
+            id: process-ce6a
