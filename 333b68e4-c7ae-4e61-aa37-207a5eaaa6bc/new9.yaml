@@ -1,7 +1,7 @@
 - route:
     id: route-f5b0
     from:
-      uri: timer:test
+      uri: timer
       id: from-419c
       parameters:
         period: '5000'
