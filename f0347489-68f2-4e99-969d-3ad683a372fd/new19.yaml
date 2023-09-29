@@ -4,13 +4,7 @@
       uri: timer:test
       id: from-7228
       steps:
-        - setBody:
-            id: setBody-b2ec
-            expression:
-              constant:
-                expression: Sprint Demo
-                id: constant-a7eb
         - log:
-            message: ${body}
+            message: Sprint demo
             id: log-f45f
             loggingLevel: INFO
