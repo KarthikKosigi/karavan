@@ -1,0 +1,18 @@
+- route:
+    id: route-549f
+    from:
+      uri: timer:test
+      id: from-0cc9
+      steps:
+        - log:
+            message: Test
+            id: log-312a
+        - process:
+            ref: Test
+            id: process-da71
+        - log:
+            message: ${body}
+            id: log-822c
+- beans:
+    - name: Test
+      type: Test
