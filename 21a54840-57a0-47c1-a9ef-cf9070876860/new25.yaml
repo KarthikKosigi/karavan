@@ -7,7 +7,7 @@
         - log:
             message: Test
             id: log-312a
-            loggingLevel: DEBUG
+            loggingLevel: INFO
         - process:
             ref: Test
             id: process-da71
