@@ -1,18 +1,11 @@
 - route:
     id: route-9e65
     from:
-      uri: timer
+      uri: timer:test
       id: from-ee69
       parameters:
         delay: '10000'
       steps:
-        - setHeader:
-            name: Content-Type
-            id: setHeader-a762
-            expression:
-              constant:
-                expression: XML
-                id: constant-8d79
         - setBody:
             id: setBody-5db4
             expression:
