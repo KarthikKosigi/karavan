@@ -6,13 +6,7 @@
       parameters:
         delay: '10000'
       steps:
-        - setBody:
-            id: setBody-5db4
-            expression:
-              constant:
-                expression: Deployed Successfully
-                id: constant-b505
         - log:
-            message: ${body}
+            message: CL
             id: log-ce76
             loggingLevel: DEBUG
