@@ -1,0 +1,12 @@
+- route:
+    id: route-aeda
+    from:
+      uri: timer:test
+      id: from-6e4a
+      parameters:
+        delay: '2000'
+      steps:
+        - log:
+            message: Cloud link hey
+            id: log-ca66
+            loggingLevel: INFO
